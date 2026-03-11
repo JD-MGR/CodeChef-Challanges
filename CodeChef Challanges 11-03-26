@@ -1,0 +1,600 @@
+1.Question 
+Vacation Excitement
+
+Chef has planned a vacation with his friends in the month of March, and is really looking forward to it!
+
+The vacation begins on the XX-th of March.
+
+As days get closer to the vacation date, Chef gets more and more excited for it.
+Chef's excitement level starts at YY on March 11. It will then increase by 11 for every day that passes; so it will be Y+1Y+1 on March 22-nd, Y+2Y+2 on March 33-rd, and so on.
+
+What will Chef's excitement level be on the day the vacation begins?
+Input Format
+
+    The only line of input will contain two space-separated integers XX and YY — the date of the trip and Chef's excitement level on March 11-st, respectively.
+
+Output Format
+
+Output a single integer: Chef's excitement level on the day the vacation begins.
+Constraints
+
+    1≤X≤311≤X≤31
+    1≤Y≤101≤Y≤10
+
+Code : 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		int y=sc.nextInt();
+		for (int i=1;i<x ;i++ ) y++; 
+        System.out.println(y);
+	}
+}
+-----------------------------------------------------------------    
+Question 2:
+
+All Zero
+
+There is a blackboard with three integers written on it: A,B,A,B, and CC.
+
+You can modify these integers with the following two types of operations:
+
+    Type 11: Subtract 11 from AA and subtract 22 from BB.
+    Type 22: Subtract 11 from BB and subtract 33 from CC.
+
+Each type of operation can be performed however many times you like.
+The operations can be performed in any order.
+
+Is it possible to perform the operations in such a way that all three of A,B,A,B, and CC become 00 simultaneously?
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of a single line of input, containing three space-separated integers A,B,CA,B,C.
+
+Output Format
+
+For each test case, output on a new line a string denoting the answer: Yes if all three integers can be made 00, and No otherwise.
+
+Each letter of the output may be printed in either uppercase or lowercase, i.e. the strings NO, No, nO, and no will all be treated as equivalent.
+Constraints
+
+    1≤T≤80001≤T≤8000
+    1≤A,B,C≤201≤A,B,C≤20
+
+Sample 1:
+Input
+Output
+
+4
+3 7 3
+3 2 6
+1 3 3
+2 5 4
+
+Yes
+No
+Yes
+No
+
+Explanation:
+
+Test case 11: One sequence of operations is as follows:
+
+    Initially, (A,B,C)=(3,7,3)(A,B,C)=(3,7,3).
+    Perform a type 11 operation. Now, (A,B,C)=(2,5,3)(A,B,C)=(2,5,3).
+    Perform a type 11 operation again. Now, (A,B,C)=(1,3,3)(A,B,C)=(1,3,3).
+    Next, perform a type 22 operation. Now, (A,B,C)=(1,2,0)(A,B,C)=(1,2,0).
+    Finally, perform a type 11 operation. Now, (A,B,C)=(0,0,0)(A,B,C)=(0,0,0) as we desired.
+
+Test case 22: It can be shown that no matter what we do, at least one of A,B,CA,B,C will be non-zero always.
+For instance, if we perform an operation of type 11 three times, AA will become 00, but BB will become 2−3⋅2=−42−3⋅2=−4; and since it's negative it can never become 00 after that.
+
+Test case 33: We have (A,B,C)=(1,3,3)(A,B,C)=(1,3,3). Getting from here to (0,0,0)(0,0,0) is already covered in the explanation for sample test case 11 (see the last two steps).
+
+Test case 44: It can be shown that no matter what we do, CC can never become 00
+
+Code : 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+    Scanner sc=new Scanner(System.in);
+    int t=sc.nextInt();
+    for(int i=0;i<t;i++){
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int c=sc.nextInt();
+        if(c%3==0&&b==(2*a+c/3)) System.out.println("Yes");
+        else System.out.println("No");
+    }
+	}
+}
+
+-----------------------------------------------------------------------------------------------
+Question 3 : 
+
+Sequential Clamp
+
+You are given NN pairs of integers. The ii-th pair is denoted (Ai,Bi)(Ai​,Bi​).
+It's guaranteed that Ai≤BiAi​≤Bi​ for every 1≤i≤N1≤i≤N.
+
+For an integer XX, we define f(X)f(X) to be the result of the following process:
+
+    Let YY be a variable.
+    Initially, Y=XY=X.
+    For each i=1,2,…,Ni=1,2,…,N in order,
+        If Y<AiY<Ai​, set Y=AiY=Ai​.
+        If Y>BiY>Bi​, set Y=BiY=Bi​.
+        If Ai≤Y≤BiAi​≤Y≤Bi​, the value of YY doesn't change.
+
+f(X)f(X) is defined to be the final value of YY after all NN steps of the process have been performed.
+
+Your task is to find the maximum possible value of f(X)f(X) across all possible input integers XX.
+It can be proved that this value is finite.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line of each test case contains a single integer NN — the number of pairs of integers.
+        The next NN lines describe the pairs. The ii-th of these NN lines contains two space-separated integers AiAi​ and BiBi​, denoting the elements of the ii-th pair.
+
+Output Format
+
+For each test case, output on a new line the answer: the maximum possible value of f(X)f(X) across all integers XX.
+Constraints
+
+    1≤T≤1001≤T≤100
+    1≤N≤1001≤N≤100
+    1≤Ai≤Bi≤1001≤Ai​≤Bi​≤100
+
+Sample 1:
+Input
+Output
+
+3
+2
+1 5
+2 6
+3
+4 8
+5 6
+2 2
+4
+4 8
+5 6
+5 7
+7 8
+
+5
+2
+7
+
+Explanation:
+
+Test case 11: Consider choosing X=9X=9. Then, f(X)f(X) will be computed as follows:
+
+    We start with Y=9Y=9.
+    At i=1i=1, we have Y>B1=5Y>B1​=5.
+    So, we set Y=B1=5Y=B1​=5.
+    At i=2i=2, we now have A2≤Y≤B2A2​≤Y≤B2​ because A2=2A2​=2 and B2=6B2​=6.
+    So, YY remains unchanged.
+
+The final value of YY is 55, and so f(9)=5f(9)=5.
+It can be proved that this is the largest possible value of f(X)f(X) for any input XX.
+
+Test case 22: Because A3=B3=2A3​=B3​=2, no matter which XX we choose we will always end up with f(X)=2f(X)=2.
+So, the answer is 22.
+
+Test case 33: One possible optimal choice of XX is X=1X=1, which can be verified to give f(X)=7f(X)=7.
+No other XX results in a larger f(X)f(X), so the answer is 77
+
+Code : 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++){
+		    int max=0;
+		    int y=0;
+		    int n=sc.nextInt();
+            int[] A = new int[n];
+            int[] B = new int[n];
+            for(int m= 0; m < n; m++)
+            {
+                A[m] = sc.nextInt();
+                B[m] = sc.nextInt();
+            }
+		    for(int x=0;x<=100;x++){
+		    y=x;
+		    for(int k=0;k<n;k++){
+		        if(y<A[k]) y=A[k];
+		        else if(y>B[k])y=B[k];
+		    }
+		    max=Math.max(max,y);
+		    }
+		    System.out.println(max);
+		}
+		
+	}
+}
+---------------------------------------------------
+
+Question 4 : 
+
+Sum Not Equal
+
+You are given an array AA of length NN.
+
+Your task is to find any three indices i,j,ki,j,k such that:
+
+    1≤i,j,k≤N1≤i,j,k≤N
+    i≠j,i≠k,j≠ki=j,i=k,j=k
+    That is, the indices {i,j,k}{i,j,k} are pairwise distinct.
+    Ai+Aj≠AkAi​+Aj​=Ak​
+
+If there are multiple possible solutions, you may find any of them.
+
+If no solution exists, print −1−1.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of two lines of input.
+        The first line of each test case contains a single integer NN — the length of the array.
+        The second line contains NN space-separated integers A1,A2,…,ANA1​,A2​,…,AN​.
+
+Output Format
+
+For each test case,
+
+    If no solution exists, output the single integer −1−1.
+    Otherwise, output three distinct space-separated integers i,j,ki,j,k denoting the indices you found.
+
+If there are multiple solutions, any of them will be accepted.
+Constraints
+
+    1≤T≤3⋅1041≤T≤3⋅104
+    3≤N≤2⋅1053≤N≤2⋅105
+    0≤Ai≤1080≤Ai​≤108
+    The sum of NN over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+3
+4
+2 1 3 0
+3
+0 0 0
+4
+4 2 0 2
+
+4 2 1
+-1
+2 3 1
+
+Explanation:
+
+Test case 11: With (i,j,k)=(4,2,1)(i,j,k)=(4,2,1), we have A4=0,A2=1,A1=2A4​=0,A2​=1,A1​=2.
+Because 0+1≠20+1=2, this is a valid triplet.
+There are many several other valid solutions, which will all be accepted as well.
+
+Test case 22: It can be verified that no valid triplet of indices exists.
+
+Test case 33: Consider (i,j,k)=(2,3,1)(i,j,k)=(2,3,1), which gives Ai+Aj=A2+A3=2Ai​+Aj​=A2​+A3​=2 while Ak=A1=4Ak​=A1​=4.
+Because 2≠42=4 this is a valid triplet
+
+----------------------------------------------------------------------------------
+
+Question 5 :
+
+Minimal Usage
+
+Chef's bakery sells NN types of cakes, numbered from 11 to NN.
+The ii-th type of cake has a weight of ii units.
+
+The bakery just received an order: a customer would like to buy exactly KK cakes with a total weight that equals SS units.
+There are no other restrictions - that is, the order can include any number of cakes of each type, as long as there are exactly KK cakes with their total weight being SS.
+It is guaranteed that K≤S≤K⋅NK≤S≤K⋅N, so that there always exists a way to fulfill the order.
+
+Unfortunately, the bakery is running low on ingredients for only the cake of type MM.
+So, Chef would like to minimize the number of type-MM cakes included in the order.
+
+Your task is thus to tell Chef the minimum number of type-MM cakes that must be included in the order.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of a single lines of input, containing four space-separated integers N,K,S,N,K,S, and MM.
+
+Output Format
+
+For each test case, output on a new line the minimum number of type MM cakes needed to fulfill the order.
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N,K≤2⋅1051≤N,K≤2⋅105
+    K≤S≤K⋅NK≤S≤K⋅N
+    1≤M≤N1≤M≤N
+    The sum of NN and the sum of KK over all test cases each won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+3
+4 2 5 3
+3 3 6 2
+100000 100000 10000000000 100000
+
+0
+1
+100000
+
+Explanation:
+
+Test case 11: We have N=4,K=2,S=5,M=3N=4,K=2,S=5,M=3.
+One option for the order is to include one cake with weight 11 and one cake with weight 44.
+This makes two cakes with a total weight of 1+4=5=S1+4=5=S.
+No cakes of weight 33 are used, so the minimum number of uses is 00 which is optimal.
+
+Test case 22: We have N=3,K=3,S=6,M=2N=3,K=3,S=6,M=2.
+The only possible option is to include one cake of weights 1,2,31,2,3, for a total of 66.
+It can be verified that no other combination of three weights in [1,3][1,3] can give a total weight of 66.
+So, we must always use 11 cake with weight 22, and the answer is 11.
+
+Test case 33: We have N=K=M=105N=K=M=105 and S=1010S=1010.
+The only possible option is to have 105105 cakes of weight 105105 each, so the answer is 105105
+--------------------------------------------------------------------------------------------------------------------
+
+Question 6 :
+
+Start Shift
+
+This is the easy version of the problem. You only need to check whether the given array is balanced.
+
+You are given an array AA of length 2N2N. The array contains every integer from 11 to NN exactly twice each.
+
+You can modify the array via the following process:
+
+    Choose an integer kk (0≤k≤2N0≤k≤2N).
+    Choose kk indices in ascending order: 1≤i1<i2<…<ik≤2N1≤i1​<i2​<…<ik​≤2N.
+    Then, for each j=1,2,3,…,kj=1,2,3,…,k in order,
+        Move element AijAij​​ to the beginning of the array.
+        The elements of the array are re-indexed to start from 11.
+
+For example, if A=[1,2,3,2,1,3]A=[1,2,3,2,1,3] and we choose k=2k=2 and the indices (3,6)(3,6),
+
+    First, the element at index 33 will be moved to the start of the array.
+    The array becomes [3,1,2,2,1,3][3,1,2,2,1,3].
+    Next, the element at index 66 will be moved to the start of the array.
+    The array becomes [3,3,1,2,2,1][3,3,1,2,2,1].
+
+The array AA is called balanced if it is possible to turn the array it into a palindrome as a result of performing this process exactly once.
+AA is said to be a palindrome if Ai=A2N+1−iAi​=A2N+1−i​ for each 1≤i≤2N1≤i≤2N.
+
+Your task is to decide if the given array is balanced or not.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of two lines of input.
+        The first line of each test case contains a single integer NN — denoting that the array has length 2N2N.
+        The second line contains 2N2N space-separated integers A1,A2,…,A2NA1​,A2​,…,A2N​.
+
+Output Format
+
+For each test case, output on a new line a string denoting the answer: Yes if AA is balanced, and No otherwise.
+
+Each letter of the output may be printed in either uppercase or lowercase, i.e. the strings NO, No, nO, and no will all be treated as equivalent.
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N≤2⋅1051≤N≤2⋅105
+    1≤Ai≤N1≤Ai​≤N
+    Each integer in [1,N][1,N] appears exactly twice in AA.
+    The sum of NN over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+4
+2
+1 2 2 1
+2
+2 1 2 1
+3
+2 1 3 1 3 2
+4
+4 1 1 2 3 4 2 3
+
+Yes
+Yes
+No
+Yes
+
+Explanation:
+
+Test case 11: The array is already a palindrome, so we just choose k=0k=0.
+
+Test case 22: One solution is as follows:
+
+    Choose k=2k=2, and the two indices (3,4)(3,4).
+    Move the element at index 33 to the front.
+    The array becomes [2,2,1,1][2,2,1,1].
+    Next, move the element at index 44 to the front.
+    The array becomes [1,2,2,1][1,2,2,1].
+
+The final array is a palindrome, as desired.
+So, the array is balanced.
+
+Test case 33: It can be shown that no matter what operation is performed, AA cannot be made into a palindrome
+--------------------------------------------------------------------------------------------------------
+
+Question 7 :
+
+Unequal Split
+
+You have a grid with NN rows and MM columns. The cell at the intersection of the ii-th row and jj-th column contains the value Ai,jAi,j​.
+Each Ai,jAi,j​ is either 00 or 11.
+
+Let's also label the lines of the grid: there are N+1N+1 horizontal segments that will be labeled 0,1,2,…,N0,1,2,…,N from top to bottom, and M+1M+1 vertical segments that we label 0,1,2,…,M0,1,2,…,M from left to right.
+The below images showcase the labeling for a 3×43×4 grid: horizontal on the left, vertical on the right.
+
+Let (x,y)(x,y) denote the intersection of horizontal line xx and vertical line yy.
+
+You would like to partition the grid into 44 parts.
+This will be done as follows.
+
+First, you must start at (0,0)(0,0) (the top-left corner of the grid), and take a path along the grid lines to reach (N,M)(N,M) (the bottom-right corner).
+Each move of this path must be taken either one step to the right or one step down, i.e. if you are standing at (x,y)(x,y), you can move to either (x+1,y)(x+1,y) or (x,y+1)(x,y+1) (provided the destination cell exists.)
+This path splits the cells of the grid into two parts: let's call them the "left" and "right" parts.
+
+Next, you must start at (N,0)(N,0) (the bottom-left corner) and take another path along the grid lines, this time to reach (0,M)(0,M) (the top-right corner).
+Each move along this path must be either upwards or rightwards, i.e. from (x,y)(x,y) you can move to either (x−1,y)(x−1,y) or (x,y+1)(x,y+1).
+The second path also splits the grid into two parts: let's call them the "top" and "bottom" parts.
+
+These two paths along the grid partition all the cells into one of four parts, depending on whether they lie in the left/right and top/bottom.
+
+Define the weight of a part to be the sum of values of all the cells in it.
+If some part contains no cells, its weight is 00.
+
+See the sample cases below for a visual explanation.
+
+Is it possible to choose the two paths such that all the four parts have pairwise distinct weights?
+If it is possible, also find a pair of valid paths.
+See the output format section and samples below for details on how to output the paths.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line of each test case contains two space-separated integers NN and MM — the dimensions of the grid.
+        The next NN lines describe the grid. The ii-th of these NN lines contains a binary string of length MM, denoting the values Ai,1,Ai,2,…,Ai,MAi,1​,Ai,2​,…,Ai,M​.
+
+Output Format
+
+For each test case,
+
+    If no valid pair of paths exists, print the string "No" (without quotes) on a single line.
+    Otherwise, output three lines.
+        The first line should contain the string "Yes" (without quotes).
+        The second line should contain a string representing the first path.
+        This should be a string of length N+MN+M containing exactly NN occurrences of D and MM occurrences of R.
+        Here, D represents a downward step and R represents a rightward step.
+        The third line should contain a string representing the first path.
+        This should be a string of length N+MN+M containing exactly NN occurrences of U and MM occurrences of R.
+        Here, U represents an upward step and R represents a rightward step.
+
+If there are multiple solutions, any of them will be accepted.
+
+Each letter of the output may be printed in either uppercase or lowercase, i.e. the strings NO, No, nO, no will all be treated as equivalent.
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N,M≤2⋅1051≤N,M≤2⋅105
+    N⋅M≤2⋅105N⋅M≤2⋅105
+    Each character of the grid is either 0 or 1.
+    The sum of N⋅MN⋅M over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+4
+4 4
+0111
+1011
+1101
+1110
+2 3
+110
+100
+4 2
+00
+00
+00
+00
+4 5
+11001
+01011
+10101
+00110
+
+Yes
+DRDRDRRD
+UUURRRUR
+No
+No
+Yes
+DDRRRRDDR
+RRUURRURU
+
+Explanation:
+
+Test case 11: The first path in the sample output is DRDRDRRD, which corresponds to the following movement:
+(0,0)→(1,0)→(1,1)→(2,1)→(2,2)→(3,2)→(3,3)→(3,4)→(4,4)
+(0,0)→(1,0)→(1,1)→(2,1)→(2,2)→(3,2)→(3,3)→(3,4)→(4,4)
+
+The second path is UUURRRUR which corresponds to
+(4,0)→(3,0)→(2,0)→(1,0)→(1,1)→(1,2)→(1,3)→(0,3)→(0,4)
+(4,0)→(3,0)→(2,0)→(1,0)→(1,1)→(1,2)→(1,3)→(0,3)→(0,4)
+
+The two chosen paths in the grid can be seen below.
+The red path is the first one, and the green path is the second.
+The gray cells have the value 11, while the white cells have value 00.
+
+Here is the grid with both paths together. The section where they overlap is colored blue.
+
+The image showcases three clear sections: "top-right" with a weight of 22, "bottom-left" with a weight of 66, and "bottom-right" with a weight of 44.
+The "top-left" section is empty, because there's no cell that's both to the left of the red path and above the green path. This empty section has a weight of 00, as defined in the statement.
+
+The four weights are hence {0,2,4,6}{0,2,4,6}. All four are distinct, so this is a valid choice of paths.
+
+Test cases 22 and 33: It can be shown that no valid solution exists.
+
+Test case 44: The paths described in the sample output are visualized below. Again, gray cells denote those with value 11, while white cells denote those with value 00.
+The first path is marked in red, the second path in green, and the part where they intersect is in blue.
+
+It can be seen that the areas of the four regions are 5,1,2,35,1,2,3 which are all distinct, as desired
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
