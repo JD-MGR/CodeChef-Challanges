@@ -1,0 +1,393 @@
+Code Chef 4 :
+
+
+Scored
+05Min
+39Sec
+Sets Diff by K
+
+For a permutation PP and a integer KK, we define f(P,K)f(P,K) as the set SS formed by the following process:
+
+    Initially, let SS be an empty set.
+    For each i=1,2,…,Ni=1,2,…,N:
+        Check if there exists x∈Sx∈S such that ∣x−Pi∣≤K∣x−Pi​∣≤K.
+        Append PiPi​ to SS if and only if there does not exist such xx.
+
+You are given a set SS of elements, represented by a binary array BB of size NN. Here, x∈Sx∈S if and only if Bx=1Bx​=1.
+
+Does there exist a permutation PP such that f(P,K)=Sf(P,K)=S. Print YesYes or NoNo accordingly.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line contains 22 integers NN and KK.
+        The second line contains NN integers - B1,B2,…,BNB1​,B2​,…,BN​.
+
+Output Format
+
+For each test case, output YesYes if there exists a valid permutation PP and NoNo otherwise.
+Constraints
+
+    1≤T≤1001≤T≤100
+    1≤K≤N≤1001≤K≤N≤100
+    0≤Bi≤10≤Bi​≤1
+
+Sample 1:
+Input
+Output
+
+5
+3 1
+1 0 1
+3 1
+0 1 1
+3 1
+0 1 0
+7 2
+1 0 0 1 0 0 1
+5 1
+0 0 0 0 0
+
+Yes
+No
+Yes
+Yes
+No
+
+Explanation:
+
+Test Case 1 : For the permutation P=[1,3,2]P=[1,3,2], the set formed is {1,3}{1,3} as required.
+
+Test Case 2 : There is no valid permutation PP.
+
+Test Case 3 : For the permutation P=[2,3,1]P=[2,3,1], the set formed is {2}{2} as required.
+acceptedAccepted
+2085
+total-SubmissionsSubmissions
+7183
+accuracyAccuracy
+30.71
+Did you like the problem statement?
+16 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+​
+
+5
+3 1
+1 0 1
+3 1
+0 1 1
+3 1
+0 1 0
+7 2
+1 0 0 1 0 0 1
+5 1
+0 0 0 0 0
+Status :Successfully executed
+Time:0.0600 secs
+Memory:41.94 Mb
+Sample Input
+
+5
+3 1
+1 0 1
+3 1
+0 1 1
+3 1
+0 1 0
+7 2
+1 0 0 1 0 0 1
+5 1
+0 0 0 0 0
+
+Your Output
+
+Yes
+No
+Yes
+No
+No
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Code Chef 5 :
+
+
+Scored
+03Min
+40Sec
+Sum of Second Max
+
+For an array BB, we define f(B)f(B) as the second largest element of the array. For example, f([2,4,5,1])=4f([2,4,5,1])=4.
+
+You are given a permutation array AA of NN integers (Each element from [1,N][1,N] occurs exactly once).
+
+Compute the sum of ff of all subarrays of AA of size at least 22. Formally, compute the following sum: ∑L=1N∑R=L+1Nf([AL,AL+1,…,AR]∑L=1N​∑R=L+1N​f([AL​,AL+1​,…,AR​].
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line contains NN - the size of the array.
+        The second line contains A1,A2,…,ANA1​,A2​,…,AN​ - the elements.
+
+Output Format
+
+For each test case, output the sum ∑L=1N∑R=L+1Nf([AL,AL+1,…,AR]∑L=1N​∑R=L+1N​f([AL​,AL+1​,…,AR​].
+Constraints
+
+    1≤T≤1041≤T≤104
+    2≤N≤2⋅1052≤N≤2⋅105
+    1≤Ai≤N1≤Ai​≤N
+    Ai≠AjAi​=Aj​ for all i≠ji=j
+    The sum of NN over all test cases does not exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+3
+3
+1 3 2
+4
+1 2 3 4
+5
+2 1 4 5 3
+
+5
+14
+31
+
+Explanation:
+
+Test Case 1 : There are 33 subarrays, [1,3][1,3], [3,2][3,2] and [1,3,2][1,3,2]. The second-maxes are 1,21,2 and 22, with a sum of 55.
+acceptedAccepted
+1895
+total-SubmissionsSubmissions
+6215
+accuracyAccuracy
+36.22
+Did you like the problem statement?
+38 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+​
+
+3
+3
+1 3 2
+4
+1 2 3 4
+5
+2 1 4 5 3
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Code chef 6:
+
+
+Scored
+02Min
+03Sec
+A to B (Easy)
+
+This is the easy version of the problem. Here, you only need to output the minimum cost only.
+
+You are given 22 binary strings AA and BB, both of length NN.
+
+You can perform the following operation on AA multiple times (possibly 00):
+
+    Choose LL and RR such that 1≤L≤R≤N1≤L≤R≤N, and flip all the values AL,AL+1,…,ARAL​,AL+1​,…,AR​.
+    The cost of this operation is 11 if AL=ARAL​=AR​, and 00 otherwise.
+
+Flipping a value means changing it to a 11 if it was 00, and vice versa.
+
+What is the minimum total cost of operations to transform AA to BB.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line contains a single integer NN.
+        The second line contains a binary string AA.
+        The third line contains a binary string BB.
+
+Output Format
+
+For each test case, output the minimum total cost of transforming AA to BB.
+Constraints
+
+    1≤T≤1001≤T≤100
+    1≤N≤501≤N≤50
+    ∣A∣=∣B∣=N∣A∣=∣B∣=N
+    Ai∈{0,1}Ai​∈{0,1}
+    Bi∈{0,1}Bi​∈{0,1}
+
+Sample 1:
+Input
+Output
+
+4
+3
+010
+110
+2
+00
+11
+1
+0
+0
+3
+010
+111
+
+0
+1
+0
+1
+
+Explanation:
+
+Test Case 1: First, we do the operation on L=2L=2 and R=3R=3 to get A=001A=001, and then on L=1L=1 and R=3R=3 to get A=110A=110. This makes AA equal to BB for 00 cost.
+acceptedAccepted
+378
+total-SubmissionsSubmissions
+4408
+accuracyAccuracy
+8.94
+Did you like the problem statement?
+13 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+​
+
+4
+3
+010
+110
+2
+00
+11
+1
+0
+0
+3
+010
+111
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Code chef 7 :
+
+
+Scored
+53Sec
+A to B (Hard)
+
+This is the hard version of the problem. Here, you need to output a valid sequence of operations too.
+
+You are given 22 binary strings AA and BB, both of length NN.
+
+You can perform the following operation on AA multiple times (possibly 00):
+
+    Choose LL and RR such that 1≤L≤R≤N1≤L≤R≤N, and flip all the values AL,AL+1,…,ARAL​,AL+1​,…,AR​.
+    The cost of this operation is 11 if AL=ARAL​=AR​, and 00 otherwise.
+
+Flipping a value means changing it to a 11 if it was 00, and vice versa.
+
+What is the minimum total cost of operations to transform AA to BB. Construct a valid sequence of operations of length at most 50005000 achieving that cost.
+
+It can be proven that it is always possible to transform AA to BB, and at least one optimal sequence of operations exists with length less than 50005000.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line contains a single integer NN.
+        The second line contains a binary string AA.
+        The third line contains a binary string BB.
+
+Output Format
+
+For each test case, output the following:
+
+    On the first line, output the minimum cost of transforming AA to BB.
+    On the second line, output KK (0≤K≤50000≤K≤5000), the number of operations you want to perform.
+    Output KK lines, each containing 22 integers LL and RR (1≤L≤R≤N1≤L≤R≤N), representing the substring you have chosen for this operation.
+
+Constraints
+
+    1≤T≤1001≤T≤100
+    1≤N≤501≤N≤50
+    ∣A∣=∣B∣=N∣A∣=∣B∣=N
+    Ai∈{0,1}Ai​∈{0,1}
+    Bi∈{0,1}Bi​∈{0,1}
+
+Sample 1:
+Input
+Output
+
+4
+3
+010
+110
+2
+00
+11
+1
+0
+0
+3
+010
+111
+
+0
+2
+2 3
+1 3
+1
+1
+1 2
+0
+0
+1
+3
+1 2
+1 3
+1 1
+
+Explanation:
+
+Test Case 1: First, we do the operation on L=2L=2 and R=3R=3 to get A=001A=001, and then on L=1L=1 and R=3R=3 to get A=110A=110. This makes AA equal to BB for 00 cost.
+acceptedAccepted
+92
+total-SubmissionsSubmissions
+1504
+accuracyAccuracy
+6.65
+Did you like the problem statement?
+4 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+​
+
+4
+3
+010
+110
+2
+00
+11
+1
+0
+0
+3
+010
+111
