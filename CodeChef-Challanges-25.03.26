@@ -1,0 +1,297 @@
+
+Target Temperature
+
+Chef is preparing his restaurant's kitchen for the day.
+
+There are NN stoves in the kitchen.
+Initially, all the stoves have a temperature of 00.
+
+Every minute, the following will happen:
+
+    First, Chef can choose at most one stove and reset its temperature to 00 instantly.
+    In particular, it is allowed to not reset the temperature of any stove, if Chef wishes to.
+    Then, the temperature of every stove will increase by 11.
+
+Note that it is allowed to reset the same stove multiple times (in different minutes).
+
+Chef thinks the ii-th stove is ready when its temperature is exactly BiBi​.
+Is it possible for Chef to make his choices in such a way that all NN stoves are ready simultaneously?
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of two lines of input.
+        The first line of each test case contains a single integer NN.
+        The second line contains NN space-separated integers B1,B2,…,BNB1​,B2​,…,BN​.
+
+Output Format
+
+For each test case, output on a new line the answer: Yes if it's possible for all NN stoves to be ready simultaneously, and No otherwise.
+
+Each character of the output may be printed in either uppercase or lowercase, i.e. the strings NO, No, nO, and no will be treated as equivalent.
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N≤2⋅1051≤N≤2⋅105
+    1≤Bi≤1091≤Bi​≤109
+    The sum of NN over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+3
+2
+1 3
+3
+4 4 4
+4
+5 6 6 5
+
+Yes
+Yes
+No
+
+Explanation:
+
+Test case 11: One valid sequence of operations is as follows.
+
+    Initially, the temperatures are [0,0][0,0].
+    In the first minute, don't reset any stove. The temperatures are [1,1][1,1].
+    In the second minute, again don't reset any stove. The temperatures are [2,2][2,2].
+    In the third minute, reset the first stove, so the temperatures are [0,2][0,2].
+    Then, every stove increases in temperature by 11, so the temperatures are [1,3][1,3].
+    This is the desired final state.
+
+Test case 22: Do nothing for four minutes and the temperatures are [4,4,4][4,4,4].
+
+Test case 33: It can be shown that it's impossible to obtain the state [5,6,6,5][5,6,6,5] no matter what Chef does.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Recurrence Reachability
+
+Given two integers xx and yy, where x<yx<y, we define a function fx,yfx,y​ with the following rules:
+
+    fx,y(0)=xfx,y​(0)=x
+    fx,y(1)=yfx,y​(1)=y
+    For every integer k≥2k≥2,
+
+fx,y(k)=3⋅fx,y(k−1)−2⋅fx,y(k−2)
+fx,y​(k)=3⋅fx,y​(k−1)−2⋅fx,y​(k−2)
+
+You're given two integers NN and MM.
+Your task is to find any pair of integers (x,y)(x,y) such that:
+
+    1≤x<y≤N1≤x<y≤N, and
+    There exists some integer k≥0k≥0 such that fx,y(k)=Mfx,y​(k)=M.
+
+If multiple such pairs exist, you may find any of them.
+If no such pairs exist, print −1−1.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of a single line of input, containing two space-separated integers NN and MM.
+
+Output Format
+
+For each test case, on a new line,
+
+    If no solution exists, output the single integer −1−1.
+    Otherwise, output two space-separated integers xx and yy (1≤x<y≤N1≤x<y≤N) denoting the pair (x,y)(x,y) you found.
+
+If multiple possible solutions exist, any of them will be accepted.
+Constraints
+
+    1≤T≤1051≤T≤105
+    2≤N≤2⋅1052≤N≤2⋅105
+    1≤M≤1091≤M≤109
+    The sum of NN over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+5
+5 7
+2 6
+6 17
+6 45
+4 2
+
+1 3
+-1
+3 5
+-1
+2 4
+
+Explanation:
+
+Test case 11: With x=1x=1 and y=3y=3, we have:
+
+    f1,3(0)=1f1,3​(0)=1
+    f1,3(1)=3f1,3​(1)=3
+    f1,3(2)=3⋅f1,3(1)−2⋅f1,3(0)=3⋅3−2⋅1=7f1,3​(2)=3⋅f1,3​(1)−2⋅f1,3​(0)=3⋅3−2⋅1=7.
+
+So, 77 does appear as the output of f1,3f1,3​.
+
+Test case 22: Since N=2N=2, the only possible choice we have is x=1,y=2x=1,y=2.
+It can be verified that the function f1,2f1,2​ never takes the value 66.
+acceptedAccepted
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+​
+
+Constrained Chopping
+
+Alice and Bob are playing a game with an array AA of NN integers. The rules of the game are as follows:
+
+    Let ∣A∣∣A∣ denote the current length of AA.
+    If ∣A∣≤2∣A∣≤2, the game terminates immediately.
+    Otherwise, Alice must choose an index ii such that 1<i<∣A∣1<i<∣A∣.
+    Then, Bob must choose one of the following two actions:
+        Delete all elements at indices 1,2,…,i1,2,…,i.
+        Delete all elements at indices i,i+1,…,∣A∣i,i+1,…,∣A∣.
+    After Bob's choice, the remaining elements are re-indexed starting from 11.
+
+After the game terminates, Alice's score is defined to be the largest element remaining in the array.
+Note that the game is only allowed to end when there are no more than two elements remaining in AA.
+
+Alice wants to maximize her score, while Bob wants to minimize Alice's score.
+Assuming both players play optimally, find Alice's final score.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of two lines of input:
+        The first line contains a single integer NN, denoting the initial size of the array.
+        The second line contains NN space-separated integers A1,A2,…,ANA1​,A2​,…,AN​.
+
+Output Format
+
+For each test case, output on a new line a single integer representing Alice's score under optimal play.
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N≤2⋅1051≤N≤2⋅105
+    1≤Ai≤N1≤Ai​≤N
+    The sum of NN over all test cases does not exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+4
+2
+1 2
+3
+1 3 2
+5
+1 3 3 2 5
+10
+2 5 3 3 4 4 8 10 7 8
+
+2
+1
+3
+4
+
+Explanation:
+
+Test case 11: The array's length is already ≤2≤2, so no moves can be performed.
+Alice's score is max⁡(1,2)=2max(1,2)=2.
+
+Test case 22: Alice's only possible move is to choose i=2i=2.
+Bob must then delete either [A1,A2][A1​,A2​] or [A2,A3][A2​,A3​].
+He will choose to delete [A2,A3][A2​,A3​], leaving the array to be just [1][1]. Alice's score is hence 11.
+
+Test case 33: Alice's optimal move is to choose i=3i=3.
+Bob must now delete either the prefix [1,3,3][1,3,3] and leave [2,5][2,5] (giving Alice a score of max⁡(2,5)=5max(2,5)=5), or delete the suffix [3,2,5][3,2,5] and leave [1,3][1,3] (giving Alice a score of max⁡(1,3)=3max(1,3)=3).
+Bob wants to minimize Alice's score, so he will choose the second option, leaving Alice with a score of 33.
+
+It can be verified that Alice's other starting moves cannot attain a score larger than 33.
+
+    If she chooses i=2i=2 on her first move, Bob will delete the suffix [3,3,2,5][3,3,2,5] leaving the array [1][1] with a score of 11.
+    If she chooses i=4i=4 on her first move, Bob will delete the suffix [2,5][2,5] and make the array [1,3,3][1,3,3].
+    Here, Alice is forced to choose the middle element, and Bob can delete [3,3][3,3] leaving Alice with a score of 11 again.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Extended Viewing
+
+After many years of work, Chef has managed to open an art gallery showcasing all his pieces.
+
+There are NN pieces of art, arranged in a line from left to right.
+The ii-th piece from the left has a beauty of AiAi​.
+Each AiAi​ equals either 11 or 22.
+
+A famous art critic is visiting the gallery, and Chef knows that he will move through the gallery as follows.
+
+Initially, the critic will start off by viewing the first art piece. Then, if pp denotes the index of the piece currently being viewed,
+
+    If Ap=1Ap​=1, the critic will move to piece p+1p+1.
+    If Ap=2Ap​=2, the critic will be absorbed in the beauty of what he just saw, and so will move to piece p+2p+2 without viewing piece p+1p+1.
+
+More generally, starting from p=1p=1, after viewing piece pp the critic will move to piece p+App+Ap​.
+If p+Ap>Np+Ap​>N, the critic will not view any more pieces.
+
+For an arrangement of art pieces, let f(A)f(A) denote the number of them that the critic will view.
+
+Chef wants f(A)f(A) to be as large as possible.
+To achieve this, he can swap adjacent art pieces.
+Functionally, this corresponds to choosing an index ii (1≤i<N1≤i<N) and performing swap(Ai,Ai+1)swap(Ai​,Ai+1​).
+
+Your task is to find the minimum number of such adjacent swaps needed to attain the maximum possible value of f(A)f(A).
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of two lines of input.
+        The first line of each test case contains a single integer NN.
+        The second line contains NN space-separated integers A1,A2,…,ANA1​,A2​,…,AN​.
+
+Output Format
+
+For each test case, output on a new line the answer: the minimum number of adjacent swaps needed to maximize f(A)f(A).
+Constraints
+
+    1≤T≤1051≤T≤105
+    1≤N≤2⋅1051≤N≤2⋅105
+    1≤Ai≤21≤Ai​≤2
+    The sum of NN over all test cases won't exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+4
+3
+2 1 2
+4
+2 2 2 2
+5
+1 2 1 2 1
+10
+2 1 1 2 1 2 1 2 2 1
+
+0
+0
+1
+4
+
+Explanation:
+
+Test case 11: With the given arrangement, the critic will behave as follows:
+
+    Start at p=1p=1 and view the first piece.
+    Then, because Ap=2Ap​=2, move to p+2=3p+2=3.
+    View the piece at p=3p=3.
+    Then, because Ap=2Ap​=2 and p+2>Np+2>N, no more pieces will be viewed.
+
+So, f(A)=2f(A)=2 for the initial arrangement.
+It can be shown that no matter what Chef does, it's impossible to make the critic view all 33 pieces. So, the maximum possible f(A)f(A) equals 22, and no swaps are needed.
+
+Test case 22: All values of AiAi​ are the same, so swapping cannot change anything.
+
+Test case 33: The initial arrangement has f(A)=3f(A)=3, because the critic will view pieces 1,4,1,4, and 55.
+However, if Chef swaps the last two pieces to obtain the arrangement [1,2,1,1,2][1,2,1,1,2], the critic will view pieces 1,2,4,51,2,4,5 which is better.
+It's impossible for all 55 pieces to be viewed, so 44 is the best and one swap is needed to get there.
+
+
